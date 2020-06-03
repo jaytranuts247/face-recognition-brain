@@ -1,39 +1,48 @@
 import React from 'react';
 
-class Signin extends React.Component {
+class Register extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			signInEmail:'',
-			signInPassword: ''
+			email:'',
+			password: '',
+			name: ''
 		}
 	}
-	
-	SigninOnKeyPressed = (target, event) => {
+	registerOnKeyPressed = (target, event) => {
+		// console.log('registerOnKeyPress',event,event.key);
 		if(event.key === 'Enter') {
-		 	switch(target) {
-		 		case "email":
-		 			this.password.focus();
-		 			break;
-		 		case "password":
-		 			this.signin.click();
-		 			break;
-		 		default:
-		 			this.email.focus();
-		 			break;
-		 	}
+			switch(target) {
+				case 'name':
+					this.email.focus();
+					break;
+				case 'email':
+					this.password.focus();
+					break;
+				case 'password':
+					this.register.click();
+					break;
+				default:
+					this.name.focus();
+					break;
+			}
 		}
-
 	}
+
+	onNameChange = (event) => {
+		this.setState({name: event.target.value})
+	}
+
 	onEmailChange = (event) => {
-		this.setState({signInEmail: event.target.value})
+		this.setState({email: event.target.value})
 	}
 
 	onPasswordChange = (event) => {
-		this.setState({signInPassword: event.target.value})
+		this.setState({password: event.target.value})
 	}
 
-	onSubmitSignIn = (event) => {
+	onSubmitRegister = (event) => { 
+		// debugger;
 		/*
 		The problem is the <form> tag in the register and the signin component.
 
@@ -43,12 +52,16 @@ class Signin extends React.Component {
 		*/
 
 		event.preventDefault();
-		fetch('https://limitless-badlands-00952.herokuapp.com/signin', {
+
+		console.log("da vo register");
+
+		fetch('https://limitless-badlands-00952.herokuapp.com/register', {
 			method:'post',
 			headers:{'Content-Type' : 'application/json'},
 			body:JSON.stringify({
-				email: this.state.signInEmail,
-				password: this.state.signInPassword
+				email: this.state.email,
+				password: this.state.password,
+				name: this.state.name
 			})
 		})
 			.then(response => response.json())
@@ -61,13 +74,24 @@ class Signin extends React.Component {
 	}
 
 	render() {
-		const { onRouteChange } = this.props;
 		return (
 			<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
 				<main className="pa4 black-80">
-		  		<div className= "measure">
+		  		<div className="measure" >
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-				      <legend className="f4 fw6 ph0 mh0">Sign In</legend>
+				      <legend className="f4 fw6 ph0 mh0">Register</legend>
+				      <div className="mt3">
+				        <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+				        <input 
+				        	className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+				        	type="text" 
+				        	name="name"  
+				        	id="name"
+				        	onChange = {this.onNameChange}
+				        	ref = {(input) => {this.name = input}}
+				        	onKeyUp = { this.registerOnKeyPressed.bind(this, 'name')}
+				        />
+				      </div>
 				      <div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 				        <input 
@@ -77,7 +101,7 @@ class Signin extends React.Component {
 				        	id="email-address"
 				        	onChange = {this.onEmailChange}
 				        	ref = {(input) => {this.email = input}}
-				        	onKeyUp = { this.SigninOnKeyPressed.bind(this, 'email')}
+				        	onKeyUp = { this.registerOnKeyPressed.bind(this, 'email')}
 				        />
 				      </div>
 				      <div className="mv3">
@@ -89,30 +113,22 @@ class Signin extends React.Component {
 					        id="password"
 					        onChange={this.onPasswordChange}
 					        ref = {(input) => {this.password = input}}
-				        	onKeyUp = { this.SigninOnKeyPressed.bind(this, 'password')}
+				        	onKeyUp = { this.registerOnKeyPressed.bind(this, 'password')}
 				        />
 				      </div>
 				     
 				    </fieldset>
 				    <div className="">
-				      <input 
-				      	onClick = {this.onSubmitSignIn}
-				      	onKeyDown = {(e) => this.SigninOnKeyDown(e)}
+				      <input 		      	
+				      	onClick = {this.onSubmitRegister}
 				      	className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-				      	type="submit" 
-				      	value="Sign in"
-				      	ref = {(input) => {this.signin = input}}
-				        onKeyUp = { this.SigninOnKeyPressed.bind(this, 'signin') }			
+				      	type="button" 
+				      	value="Register"
+				      	ref = {(el) => {this.register = el}}
+				        onKeyUp = { this.registerOnKeyPressed.bind(this, 'register')}
 				      />
 				    </div>
-				    <div className="lh-copy mt3">
-				      <p 
-					      onClick={() => onRouteChange('register')} 
-					      className="f5 link dim black db pointer"
-					    >
-					    	Register
-					    </p>
-				    </div>
+
 		  		</div>
 				</main>
 			</article>
@@ -121,8 +137,4 @@ class Signin extends React.Component {
 	}
 }
 
-		
-
-
-
-export default Signin;
+export default Register;
