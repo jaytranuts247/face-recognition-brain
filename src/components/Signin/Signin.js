@@ -43,7 +43,7 @@ class Signin extends React.Component {
 		*/
 
 		event.preventDefault();
-		fetch('https://limitless-badlands-00952.herokuapp.com/signin', {
+		fetch('https://smart-brain-api-2020.herokuapp.com//signin', {
 			method:'post',
 			headers:{'Content-Type' : 'application/json'},
 			body:JSON.stringify({
@@ -120,8 +120,6 @@ class Signin extends React.Component {
 	
 	}
 }
-
-		
 
 
 
