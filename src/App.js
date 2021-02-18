@@ -131,7 +131,7 @@ class App extends React.Component {
 						.then((count) => {
 							this.setState(Object.assign(this.state.user, { entries: count }));
 						})
-						.catch(console.log);
+						.catch((err) => console.log(err));
 				}
 				this.displayFaceBox(this.calculateFaceLocation(response));
 			})
