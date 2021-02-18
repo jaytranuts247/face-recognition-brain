@@ -59,7 +59,7 @@ class Register extends React.Component {
 			headers: {
 				"Content-Type": "application/json",
 				"Access-Control-Allow-Origin":
-					"https://smart-brain-api-2020.herokuapp.com/signin",
+					"https://smart-brain-api-2020.herokuapp.com/register",
 			},
 			body: JSON.stringify({
 				email: this.state.email,
