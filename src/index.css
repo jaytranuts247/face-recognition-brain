@@ -1,30 +1,22 @@
 body {
-  margin: 0;
-<<<<<<< HEAD
-  padding:0;
-  /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	margin: 0;
+
+	padding: 0;
+	/*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;*/
-  font-family: "Courier New";
-	background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 94%);
-=======
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
->>>>>>> cd6ddbc... Initialize project using Create React App
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: "Courier New";
+	background: linear-gradient(89deg, #ff5edf 0%, #04c8de 94%);
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
-<<<<<<< HEAD
-
 
 button {
 	cursor: pointer;
 }
-=======
->>>>>>> cd6ddbc... Initialize project using Create React App
