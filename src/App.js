@@ -98,7 +98,12 @@ class App extends React.Component {
 		this.setState({ ImageUrl: this.state.input });
 		fetch("https://smart-brain-api-2020.herokuapp.com/imageurl", {
 			method: "post",
-			headers: { "Content-Type": "application/json" },
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin":
+					"https://smart-brain-api-2020.herokuapp.com/imageurl",
+			},
 			body: JSON.stringify({
 				input: this.state.input,
 			}),
@@ -108,7 +113,12 @@ class App extends React.Component {
 				if (response) {
 					fetch("https://smart-brain-api-2020.herokuapp.com/image", {
 						method: "put",
-						headers: { "Content-Type": "application/json" },
+						mode: "cors",
+						headers: {
+							"Content-Type": "application/json",
+							"Access-Control-Allow-Origin":
+								"https://smart-brain-api-2020.herokuapp.com/image",
+						},
 						body: JSON.stringify({
 							id: this.state.user.id,
 						}),
