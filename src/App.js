@@ -96,7 +96,7 @@ class App extends React.Component {
 		// 	);
 
 		this.setState({ ImageUrl: this.state.input });
-		fetch("https://limitless-badlands-00952.herokuapp.com/imageurl", {
+		fetch("https://smart-brain-api-2020.herokuapp.com/imageurl", {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
@@ -106,7 +106,7 @@ class App extends React.Component {
 			.then((response) => response.json())
 			.then((response) => {
 				if (response) {
-					fetch("https://limitless-badlands-00952.herokuapp.com/image", {
+					fetch("https://smart-brain-api-2020.herokuapp.com/image", {
 						method: "put",
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify({
