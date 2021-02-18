@@ -45,7 +45,12 @@ class Signin extends React.Component {
 
 		fetch("https://smart-brain-api-2020.herokuapp.com/signin", {
 			method: "post",
-			headers: { "Content-Type": "application/json" },
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin":
+					"https://smart-brain-api-2020.herokuapp.com/signin",
+			},
 			body: JSON.stringify({
 				email: this.state.signInEmail,
 				password: this.state.signInPassword,

@@ -55,7 +55,12 @@ class Register extends React.Component {
 
 		fetch("https://smart-brain-api-2020.herokuapp.com/register", {
 			method: "post",
-			headers: { "Content-Type": "application/json" },
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin":
+					"https://smart-brain-api-2020.herokuapp.com/signin",
+			},
 			body: JSON.stringify({
 				email: this.state.email,
 				password: this.state.password,
